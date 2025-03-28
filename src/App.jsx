@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import withLayout from './hoc/withLayout'
+import { testimonials } from './data/testimonials'
+import TestimonialCard from './components/TestimonialCard'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -93,32 +95,14 @@ function App() {
             What Our Users Say
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Testimonial 1 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <p className="text-gray-600">"Amazing platform that helped our business grow tremendously."</p>
-              <div className="mt-4">
-                <h4 className="font-semibold">John Doe</h4>
-                <p className="text-gray-500">CEO, Tech Corp</p>
-              </div>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <p className="text-gray-600">"The best solution we've found for our needs. Highly recommended!"</p>
-              <div className="mt-4">
-                <h4 className="font-semibold">Jane Smith</h4>
-                <p className="text-gray-500">Founder, Design Studio</p>
-              </div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <p className="text-gray-600">"Intuitive interface and powerful features. Just what we needed."</p>
-              <div className="mt-4">
-                <h4 className="font-semibold">Mike Johnson</h4>
-                <p className="text-gray-500">Developer</p>
-              </div>
-            </div>
+            {testimonials.map((testimonial) => (
+              <TestimonialCard
+                key={testimonial.id}
+                quote={testimonial.quote}
+                author={testimonial.author}
+                role={testimonial.role}
+              />
+            ))}
           </div>
         </div>
       </div>
